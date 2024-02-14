@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo.css">
-    <title>Invitación a San Valentín encoded</title>
+    <title>Mi San Valentín </title>
 </head>
 <body>
     <div class="container">
@@ -40,6 +40,7 @@
         
         <h1 id="question">¿Mychelle quieres ser mi San Valentín?</h1>
         <div id="messageContainer" style="display: none;"></div>
+        <div id="messageContainer2" style="display: none;"></div>
 
         <button id="siBtn">Sí quiero ser tu San Valentín</button>
         <button id="noBtn">No</button>
@@ -71,9 +72,20 @@
             // Guardar el estado de reproducción en la sesión del navegador
             sessionStorage.setItem('audioPlaybackState', 'playing');
         });
+        audioPlayer.addEventListener('ended', () => {
+            // Reinicia la reproducción
+            audioPlayer.currentTime = 0; // Reinicia la reproducción al principio
+            audioPlayer.play(); // Vuelve a reproducir la música automáticamente
+        });
       
         siBtn.addEventListener('click', () => {
+            audioPlayer.play();
             // Redireccionar a otra página
+            setTimeout(() => {
+           
+                document.getElementById('messageContainer2').style.display = 'block';
+                document.getElementById('messageContainer2').innerHTML = '¡Heyyyy espera, aun no termino';
+            }, 4000);
             setTimeout(() => {
              window.location.href = 'carta.html';
             }, 10000);

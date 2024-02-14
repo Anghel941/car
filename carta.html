@@ -56,13 +56,14 @@
   const playButton = document.getElementById('repro');
   const audioPlayer = document.getElementById('audioPlayer');
   
-  
-  
   playButton.addEventListener('click', () => {
       audioPlayer.play();
    
   });
-  
+  audioPlayer.addEventListener('ended', () => {
+        audioPlayer.currentTime = 0; 
+        audioPlayer.play(); 
+  });
   
 </script>
 </body>
